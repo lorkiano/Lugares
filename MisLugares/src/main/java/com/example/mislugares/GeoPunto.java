@@ -51,7 +51,7 @@ public class GeoPunto {
         return Objects.hash(longitud, latitud);
     }
 
-    public  String toString(){
+    public String toString(){
         return new String("longitud:" + longitud + ", latitud:" + latitud);
     }
 

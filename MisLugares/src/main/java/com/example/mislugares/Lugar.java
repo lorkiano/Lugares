@@ -12,7 +12,8 @@ public class Lugar {
     private String url;
     private String comentario;
     private long fecha;
-    private  float valoracion;
+    private float valoracion;
+    private TipoLugar tipo;
 
     /*
     GETTERS
@@ -27,6 +28,31 @@ public class Lugar {
 
     public GeoPunto getPosicion() {
         return posicion;
+    }
+
+    public TipoLugar getTipo() { return tipo; }
+    public String getFoto() {
+        return foto;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public long getFecha() {
+        return fecha;
+    }
+
+    public float getValoracion() {
+        return valoracion;
     }
 
     /*
@@ -68,45 +94,7 @@ public class Lugar {
         this.valoracion = valoracion;
     }
 
-    public String getFoto() {
-        return foto;
-    }
-
-    public int getTelefono() {
-        return telefono;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public String getComentario() {
-        return comentario;
-    }
-
-    public long getFecha() {
-        return fecha;
-    }
-
-    public float getValoracion() {
-        return valoracion;
-    }
-
-    /*
-    CONSTRUCTOR
-     */
-    public Lugar(String nombre, String direccion, double longitud,
-                 double latitud, int telefono, String url, String comentario,
-                 float valoracion) {
-        fecha = System.currentTimeMillis();
-        posicion = new GeoPunto(longitud, latitud);
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.url = url;
-        this.comentario = comentario;
-        this.valoracion = valoracion;
-    }
+    public void setTipo(TipoLugar tipo) { this.tipo = tipo; }
 
     @Override
     public String toString() {
@@ -120,7 +108,34 @@ public class Lugar {
                 ", comentario='" + comentario + '\'' +
                 ", fecha=" + fecha +
                 ", valoracion=" + valoracion +
+                ", tipo=" + tipo +
                 '}';
+    }
+
+    /*
+        CONSTRUCTORES
+         */
+
+    // Para poder crear un nuevo lugar sin indicar sus atributos
+    public Lugar() {
+        fecha = System.currentTimeMillis();
+        posicion = new GeoPunto(0.0, 0.0);
+        tipo = TipoLugar.OTROS;
+    }
+
+    public Lugar(String nombre, String direccion, double longitud,
+                 double latitud, TipoLugar tipo, int telefono, String url, String comentario,
+                 float valoracion) {
+        fecha = System.currentTimeMillis();
+        posicion = new GeoPunto(longitud, latitud);
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.url = url;
+        this.comentario = comentario;
+        this.valoracion = valoracion;
+        this.tipo = tipo;
+
     }
 
 }
